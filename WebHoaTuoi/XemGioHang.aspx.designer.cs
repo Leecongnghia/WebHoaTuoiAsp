@@ -11,25 +11,34 @@ namespace WebHoaTuoi
 {
 
 
-    public partial class XemHoa
+    public partial class XemGioHang
     {
 
         /// <summary>
-        /// rptHoa control.
+        /// gvGioHang control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptHoa;
+        protected global::System.Web.UI.WebControls.GridView gvGioHang;
 
         /// <summary>
-        /// sdsHoa control.
+        /// lbTongTien control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sdsHoa;
+        protected global::System.Web.UI.WebControls.Label lbTongTien;
+
+        /// <summary>
+        /// btDatHang control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btDatHang;
     }
 }

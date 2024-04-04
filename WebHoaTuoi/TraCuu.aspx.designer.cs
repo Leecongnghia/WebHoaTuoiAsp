@@ -78,13 +78,13 @@ namespace WebHoaTuoi
         protected global::System.Web.UI.WebControls.ValidationSummary vsLoi;
 
         /// <summary>
-        /// rptHoa control.
+        /// lvHoa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptHoa;
+        protected global::System.Web.UI.WebControls.ListView lvHoa;
 
         /// <summary>
         /// sdsHoaTheoGia control.

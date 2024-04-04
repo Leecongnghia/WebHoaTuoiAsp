@@ -7,6 +7,8 @@
     <title></title>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/main.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -14,36 +16,61 @@
     <form id="form1" runat="server">
     
          <!--MENU-->
-        <nav class="navbar navbar-expand-lg  fs-7 text-light " style= "background-color:#4682B4 " >
-        <a class="navbar-brand text-light" href="XemHoa.aspx">Hoa Tươi</a>
+        <nav class="navbar navbar-expand-lg  fs-7 text-light " style="background-color: #2e8084">
+            <a class="navbar-brand text-light" href="XemHoa.aspx">Hoa Tươi</a>
             <!--Nav Link--->
- 
-         <ul class="navbar-nav">
-             <li class="nav-item">
-             <a class="nav-link active text-light" aria-current="page" href="XemHoa.aspx">Xem Hoa</a>
-            </li>
-            <li class="nav-item">
-             <a class="nav-link active text-light" aria-current="page" href="ThemHoa.aspx">Thêm Hoa</a>
-            </li>
-             <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="TraCuu.aspx">Tra Cứu</a>
-            </li>   
-              
-             <!--Dropdown-->
-             
-           </ul>
-    </nav>
-   
+
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle text-light"  href="#" id="navbardrop" data-toggle="dropdown">
+                        Danh mục hoa
+                    </a>
+                    <div class="dropdown-menu">
+                        <asp:Repeater ID="rptLoaiHoa" runat="server" DataSourceID="sdsLoai">
+                            <ItemTemplate>
+                                <a class="dropdown-item" href="XemHoa.aspx?maloai=<%# Eval("Maloai") %>"><%# Eval("TenLoai") %></a>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
+                    </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-light" aria-current="page" href="XemHoa.aspx">Xem Hoa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-light" aria-current="page" href="ThemHoa.aspx">Thêm Hoa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-light" aria-current="page" href="TraCuu.aspx">Tra Cứu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-light" aria-current="page" href="XemGioHang.aspx">Xem Giỏ Hàng</a>
+                </li>
+
+                <!--Dropdown-->
+
+            </ul>
+        </nav>
+
+                        <!--- <asp:DropDownList ID="ddlLoai" runat="server"
+                DataSourceID="sdsLoai" DataTextField="TenLoai" AutoPostBack="True" CssClass="form-control"
+                DataValueField="MaLoai">
+            </asp:DropDownList>-->
+                    
         <div style="min-height:500px " class="container">
             <asp:ContentPlaceHolder ID="Noidung" runat="server">
             </asp:ContentPlaceHolder>
         </div>
 
-        <div class=" text-center text-light " style= "background-color:#4682B4 ">
+        <asp:SqlDataSource ID="sdsLoai" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:HoaTuoiASPConnectionString %>" 
+        SelectCommand="SELECT * FROM [Loai]"></asp:SqlDataSource>
+
+        <div class=" text-center text-light " style= "background-color:#2e8084 ">
             Sinh Viên: Lê Công Nghĩa MSSV: 2221160031
         </div>
-
-
     </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

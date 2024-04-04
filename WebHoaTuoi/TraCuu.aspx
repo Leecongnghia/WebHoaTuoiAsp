@@ -25,7 +25,13 @@
 
     <asp:ValidationSummary ID="vsLoi" runat="server" ShowSummary="False" />
      <div class="row mt-2">
-         <asp:Repeater ID="rptHoa" runat="server" DataSourceID="sdsHoaTheoGia">
+         <%--<asp:Repeater ID="rptHoa" runat="server" DataSourceID="sdsHoaTheoGia">
+             <ItemTemplate>
+                 
+             </ItemTemplate>
+         </asp:Repeater>--%>
+
+         <asp:ListView ID="lvHoa" runat="server" DataSourceID="sdsHoaTheoGia">
              <ItemTemplate>
                  <div class="col-md-3 text-center mb-2">
                      <a href="#">
@@ -33,12 +39,38 @@
                      </a> <br />
 
                      <%# Eval("TenHoa") %> <br />
-                     Giá bán: <%# Eval("gia","{0:#,##0} đồng") %> <br />
-                     <asp:Button ID="btAddToCard" runat="server" Text="AddToCard" 
-                         CssClass="btn btn-danger" />
+                     <div style="color:red">Giá bán: <%# Eval("gia","{0:#,##0} đồng") %></div> 
+                     <asp:Button ID="btAddToCard" runat="server" Text="Thêm vào giỏ" 
+                         CssClass="btn bg-warning active" />
                  </div>
              </ItemTemplate>
-         </asp:Repeater>
+             <LayoutTemplate>
+                 <div class="row">
+                     <div id="itemPlaceHolder" runat="server">
+
+                     </div>
+                     <div class=" text-center w-100 mt-3 p-3 pb-3">
+                         <div class="row-cols-3 ">
+                         Trang  <asp:DataPager  ID="dpageHoa" runat="server" PageSize="6">
+                             <Fields>
+                                 <asp:NextPreviousPagerField ButtonCssClass="active alert-danger badge-primary" FirstPageText="Đầu" ShowFirstPageButton="true" 
+                                      PreviousPageText="Trước" NextPageText="Sau" LastPageText="Cuối" ShowLastPageButton="true"   />
+                             </Fields>
+                         </asp:DataPager>
+                     </div>
+                   </div>
+                 </div>
+             </LayoutTemplate>
+             <EmptyDataTemplate>
+                 
+                 <div class="alert alert-info">
+                 Không có dữ liệu
+                     </div>
+                     
+
+             </EmptyDataTemplate>
+         </asp:ListView>
+
         </div>
 
 
@@ -46,8 +78,8 @@
         ConnectionString="<%$ ConnectionStrings:HoaTuoiASPConnectionString %>" 
         SelectCommand="SELECT * FROM [Hoa] WHERE (([Gia] &gt;= @Gia) AND ([Gia] &lt;= @Gia2))">
         <SelectParameters>
-            <asp:ControlParameter ControlID="txtGiaTu" Name="Gia" PropertyName="Text" Type="Double" />
-            <asp:ControlParameter ControlID="txtGiaDen" Name="Gia2" PropertyName="Text" Type="Double" />
+            <asp:ControlParameter ControlID="txtGiaTu" Name="Gia" PropertyName="Text" Type="Double" DefaultValue="0" />
+            <asp:ControlParameter ControlID="txtGiaDen" Name="Gia2" PropertyName="Text" Type="Double" DefaultValue="10000000" />
         </SelectParameters>
     </asp:SqlDataSource>
 
