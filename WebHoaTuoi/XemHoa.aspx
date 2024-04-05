@@ -26,7 +26,7 @@
 
 
 
-
+    <!--sql--->
     <asp:SqlDataSource ID="sdsHoa" runat="server"
         ConnectionString="<%$ ConnectionStrings:HoaTuoiASPConnectionString %>"
         SelectCommand="SELECT * FROM [Hoa] WHERE ([MaLoai] = @MaLoai)">

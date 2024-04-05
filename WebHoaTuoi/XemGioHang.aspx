@@ -25,18 +25,19 @@
             </asp:TemplateField>
             <asp:BoundField HeaderText="Thành tiền" DataField="Thanhtien"
                 DataFormatString="{0:#,##0}đ" />
-            <asp:CommandField ShowDeleteButton="true" ControlStyle-CssClass="w-25" ButtonType="Image"
-                DeleteImageUrl="~/Hinh_San_Pham/delete.gif"  />
+            
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:ImageButton ID="btCapNhat" Width="100px" runat="server" ToolTip="Cập nhật"
+                    <asp:ImageButton ID="btDelete" Width="60px" CssClass=" btn btn-danger" runat="server" ToolTip="Xóa"
+                        CommandName="Delete"  ImageUrl="~/Hinh_San_Pham/delete.gif" />
+                    <asp:ImageButton ID="btCapNhat" Width="70px" CssClass=" btn btn-info" runat="server" ToolTip="Cập nhật"
                         CommandName="Update"  ImageUrl="~/Hinh_San_Pham/save.gif" />
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-
+        
         <EmptyDataTemplate>
-            <div class="alert alert-info">
+            <div class="alert alert-danger">
                 Chưa có sản phẩm trong giỏ
             </div>
         </EmptyDataTemplate>

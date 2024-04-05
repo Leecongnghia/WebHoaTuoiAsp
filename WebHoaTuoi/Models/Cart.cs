@@ -41,22 +41,40 @@ namespace WebHoaTuoi.Models
 
                     SoLuong = 1
                 };
-                
+
 
 
                 // cho trường hợp sản phẩm đã có trong giỏ)
+                int index = findID(masp);
+                if(index == -1) //Chưa có trong giỏ hàng
                 _items.Add(sp);
+                else
+                {
+                    _items[index].SoLuong++ ;
+                }
+                
             }
         }
         //Phương thức cập nhật số lượng,
         public void Update(int masp, int soluong)
         {
-            
+            int index = findID(masp);
+            if (index != -1 )
+            {
+                if (soluong > 0)
+                    _items[index].SoLuong = soluong;
+                else
+                    _items.RemoveAt(index);
+            }
         }
         //Phương thức xoá sản phẩm khỏi giỏ,
         public void Delete(int masp)
         {
-            SqlConnection conn = new
+
+            int index = findID(masp);
+            if (index != -1)
+                _items.RemoveAt(index);
+            /*SqlConnection conn = new
             SqlConnection(ConfigurationManager.ConnectionStrings["HoaTuoiASPConnectionString"].ConnectionString);
             
             SqlCommand cmd = new SqlCommand("delete * from Hoa where mahoa=@mahoa", conn);
@@ -65,8 +83,35 @@ namespace WebHoaTuoi.Models
             cmd.Connection = conn;
             conn.Open();
             cmd.ExecuteNonQuery();
-            conn.Close();
+            conn.Close();*/
+
+            /*for(int i = 0; i < _items.Count; i++)
+            {
+                if (_items[i].MaSP == masp)
+                {
+                    _items.RemoveAt(i);
+                    break;
+                }    
+            } */ 
+            
+           
+
+
         }
+
+        private int findID (int masp)
+        {
+            for (int i = 0; i < _items.Count; i++)
+            {
+                if(_items[i].MaSP == masp)
+                {
+                    return i;
+                }    
+            }
+            return -1;
+        }
+
+
         //Tính tổng thành tiền
         public int Total
         {

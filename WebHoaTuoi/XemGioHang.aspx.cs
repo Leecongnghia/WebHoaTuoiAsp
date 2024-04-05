@@ -26,11 +26,11 @@ namespace WebHoaTuoi
             Cart cart = (Cart)Session["CART"];
             if (cart != null)
             {
-                //liên kết dữ liệu cho gvGioHang
+                //Liên kết dữ liệu cho gvGioHang
                 gvGioHang.DataSource = cart.Items;
                 gvGioHang.DataBind();
-                //gán tổng thành tiền cho Label
-                lbTongTien.Text = string.Format("Tổng thành tiền: <b> {0: #,##0} triệu </b>",
+                //Gán tổng thành tiền cho Label
+                lbTongTien.Text = string.Format("Tạm tính tiền: <b> {0: #,##0} triệu </b>",
                 cart.Total);
             }    
         }
@@ -39,6 +39,7 @@ namespace WebHoaTuoi
         {
             //b1.Lấy mã sản phẩm cần xoá khỏi giỏ hàng
             int masp = int.Parse(gvGioHang.DataKeys[e.RowIndex].Value.ToString());
+            Response.Write($"<scrip> alert ('Mã sản phẩm chọn xóa: {masp}') </scrip>");
             //b2.Lấy giỏ hàng từ Session
             Cart cart = (Cart)Session["CART"];
             //b3.Xoá sản phẩm khỏi giỏ

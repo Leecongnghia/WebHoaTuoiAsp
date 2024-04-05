@@ -51,7 +51,7 @@
                      </div>
                      <div class=" text-center w-100 mt-3 p-3 pb-3">
                          <div class="row-cols-3 ">
-                         Trang  <asp:DataPager  ID="dpageHoa" runat="server" PageSize="6">
+                         Trang  <asp:DataPager  ID="dpageHoa" runat="server" PageSize="8">
                              <Fields>
                                  <asp:NextPreviousPagerField ButtonCssClass="active alert-danger badge-primary" FirstPageText="Đầu" ShowFirstPageButton="true" 
                                       PreviousPageText="Trước" NextPageText="Sau" LastPageText="Cuối" ShowLastPageButton="true"   />

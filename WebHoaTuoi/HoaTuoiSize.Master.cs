@@ -11,7 +11,7 @@ namespace WebHoaTuoi
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lbDemTruyCap.Text = Application["DemTruyCap"].ToString();
         }
     }
 }
